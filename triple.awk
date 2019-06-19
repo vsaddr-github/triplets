@@ -1,43 +1,62 @@
-BEGIN {f1="0"; f2="0"; f3="0"; i="" ; fld="C:\\Users\\vsereb\\Pictures\\Watk20190610\\"; cnt=0}
-                            {print "rem ## " $0}
-/,0$/                       {
-                              split($0, a,"," )
-                              f1=a[1]
-                              split(a[3], b, ".")
-                              FL=b[1]
-                              if (a[7] == "AEB" ) # we are in start of seq 0f 3!
-                               {
-                                f2=""; f3=""; sub(" ","T",a[2]); gsub(":","",a[2]); i="IMG_" a[2] ;
-                               }
-                              else
-                               {
-                                cnt=cnt+1 
-                                print "rem #single num:" , cnt,FL, f1; 
-                                print "IF NOT EXIST " "\"" fld FL ".jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe \"   -srgb  -x1 -n1 -default -o \"" fld FL ".jpg\""  ,"\"" f1 "\"  -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\" < c:\\temp\\cr.txt";
-                                #print "IF     EXIST " "\"" fld FL ".jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe\"   -overwrite_original_in_place -copyright=\"" f1 "\"", "\"" fld FL ".jpg\""  
-                                f1=""; FL=""
-                               }
-                            } # 2007:08:04 19:19:45
- /,-[1-9]\/[1-9]$/  ||  /,-[1-9]$/    { split($0, a,"," )  ;  f2=a[1]  ; print "rem ##  -- second "  f2 ; }
-/,\+[1-9]\/[1-9]$/  || /,\+[1-9]$/    { split($0, a,"," )  ;  f3=a[1]  ; print "rem ##  ++ third  "  f3 ;
+BEGIN {f1=""; f2=""; f3=""; 
+       ff1=""; ff2=""; ff3=""
+       i="" ; cnt=0;
+       TGT_DIR="C:\\Pictures\\Watk20190610\\"; 
+       SNS_HDR_EXE="C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe";
+       EXIFTOOL="C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe";
+       I_VIEW="C:\\Program Files (x86)\\IrfanView\\i_view32.exe"
+       XF_1="-x1 ";
+       NS_1="-n1 ";
+       XF_3="-x1 ";
+       NS_3="-n1 ";
+       CRF=" c:\\temp\\cr.txt"
+       JPG=".jpg"
+       DJPG="d.jpg"
+       LJPG="l.jpg"
+       
+       }
+                {print "rem #Line " $0}
+/,0$/           {
+                    split($0, a,"," )
+                    f1=a[1]
+                    ff1=a[3]
+                    split(a[3], b, ".")
+                    FILE_NAME=b[1]
+                    if (a[7] == "AEB" ) # we are in start of seq 0f 3!
+                    {
+                        print "rem ##  ~~ first file", f1
+                        f2=""; f3=""; sub(" ","T",a[2]); gsub(":","",a[2]); i="IMG_" a[2] ;
+                    }
+                    else
+                    {
+                        cnt=cnt+1 ;
+                        print "rem #Num", cnt, "#single shot:" , f1; 
+                        print "IF NOT EXIST  \"" TGT_DIR FILE_NAME JPG "\"" , "\"" SNS_HDR_EXE  "\"", "-srgb" , XF_1, NS_1, "-default -o \"" TGT_DIR FILE_NAME JPG "\"" , "\"" f1 "\"", " -ee \"" I_VIEW "\"" , " < ", CRF ;
+                        print "IF     EXIST  \"" TGT_DIR FILE_NAME JPG "\"" , "\"" EXIFTOOL     "\"", "-overwrite_original_in_place -UserComment=\"" ff1 "\"", "\"" TGT_DIR FILE_NAME JPG "\""  ;
+                        f1=""; FILE_NAME=""
+                    }
+                } # 
+ /,-[1-9]\/[1-9]$/  ||  /,-[1-9]$/    { split($0, a,"," )  ;  f2=a[1] ; ff2=a[3] ; print "rem ##  -- second file "  f2 ; }
+/,\+[1-9]\/[1-9]$/  || /,\+[1-9]$/    { split($0, a,"," )  ;  f3=a[1] ; ff3=a[3] ; print "rem ##  ++ third  file "  f3 ;
         if (length(i) > 4) 
             {
-            cnt=cnt+1
-            print "rem num:" , cnt
-            print "IF NOT EXIST " "\"" fld i "d.jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe \"  -srgb  -x1 -n1 -default   -o \"" fld i "d.jpg\""  ,"\"" f1 "\"", "\"" f2 "\"", "\"" f3 "\"   -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\"  < c:\\temp\\cr.txt ";
-            print "IF     EXIST " "\"" fld i "d.jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe\"  -overwrite_original_in_place -copyright=\"" f1, f2, f3 "\"", "\"" fld i "d.jpg\""  
-            print "IF NOT EXIST " "\"" fld i "l.jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe \"  -srgb  -x1 -n1 -landscape -o \"" fld i "l.jpg\""  ,"\"" f1 "\"", "\"" f2 "\"", "\"" f3 "\"  -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\"  < c:\\temp\\cr.txt ";
-            print "IF     EXIST " "\"" fld i "l.jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe\"  -overwrite_original_in_place -copyright=\"" f1, f2, f3 "\"", "\"" fld i "l.jpg\""  
-            i=""; f1=""; f2=""; f3=""; FL=""
+                cnt=cnt+1
+                print "rem num:" , cnt
+                print "IF NOT EXIST " "\"" TGT_DIR i "d.jpg\"" , "\"" SNS_HDR_EXE  "\"", "-srgb", XF_3, NS_3, "-default   -o \"" TGT_DIR i "d.jpg\""  ,"\"" f1 "\"", "\"" f2 "\"", "\"" f3 "\" -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\" < c:\\temp\\cr.txt";
+                print "IF     EXIST " "\"" TGT_DIR i "d.jpg\"" , "\"" EXIFTOOL     "\"", "-overwrite_original_in_place -UserComment=\"" ff1, ff2, ff3 "\"", "\"" TGT_DIR i DJPG "\""
+                
+                print "IF NOT EXIST " "\"" TGT_DIR i "l.jpg\"" , "\"" SNS_HDR_EXE  "\"", "-srgb", XF_3, NS_3, "-landscape -o \"" TGT_DIR i "l.jpg\""  ,"\"" f1 "\"", "\"" f2 "\"", "\"" f3 "\" -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\" < c:\\temp\\cr.txt";
+                print "IF     EXIST " "\"" TGT_DIR i "l.jpg\"" , "\"" EXIFTOOL     "\"", "-overwrite_original_in_place -UserComment=\"" ff1, ff2, ff3 "\"", "\"" TGT_DIR i LJPG "\""  
+                i=""; f1=""; f2=""; f3=""; FILE_NAME=""
             }
       }
 END { 
       if (length(f1) > 0 )
       {
         cnt=cnt+1
-        print "rem #single skip num:" cnt, f1;
-        print "IF NOT EXIST " "\"" fld FL ".jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe \"   -srgb  -x1 -n1 -default -o \"" fld FL ".jpg\""  ,"\"" f1 "\"  -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\"  < c:\\temp\\cr.txt ";
-        #print "IF     EXIST " "\"" fld FL ".jpg\"" , "\"C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe\"   -overwrite_original_in_place -copyright=\"" f1 "\"", "\"" fld FL ".jpg\"" 
+        print "rem #Num ", cnt, "last single shot:", f1;
+        print "IF NOT EXIST " "\"" TGT_DIR FILE_NAME JPG "\"" , "\"" SNS_HDR_EXE  "\"",  "-srgb", XF_1, NS_1, "-default -o \"" TGT_DIR FILE_NAME JPG "\""  ,"\"" f1 "\"  -ee \"C:\\Program Files (x86)\\IrfanView\\i_view32.exe\"  < c:\\temp\\cr.txt ";
+        print "IF     EXIST " "\"" TGT_DIR FILE_NAME JPG "\"" , "\"" EXIFTOOL    "\"" ,  "-overwrite_original_in_place -UserComment=\"" ff1 "\"", "\"" TGT_DIR FILE_NAME JPG "\"" 
         f1=""
        }
     }
