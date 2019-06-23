@@ -44,11 +44,11 @@ Other options:
 
 ## In DOS window run:
 
-`set OPTS=-fileOrder DateTimeOriginal -DateTimeOriginal -Filename -ExposureTime -FNumber  -AEBBracketValue
+`set OPTS=-fileOrder DateTimeOriginal -DateTimeOriginal -Filename -ExposureTime -FNumber  -AEBBracketValue`
 
-cd /d E:\DCIM\100CANON
+`cd /d E:\DCIM\100CANON`
 
-"C:\Program Files\SNS-HDR Lite 2\exiftool" -T  %OPTS%   -csv -ext  CR2 IMG_*.CR2  > c:\temp\list48.txt`
+`"C:\Program Files\SNS-HDR Lite 2\exiftool" -T  %OPTS%   -csv -ext  CR2 IMG_*.CR2  > c:\temp\list48.txt`
 
 ## In Git Bash window run:
 
@@ -56,9 +56,9 @@ cd /d E:\DCIM\100CANON
 
 ## In DOS window run:
 
-`cd /d E:\DCIM\100CANON
+`cd /d E:\DCIM\100CANON`
 
-C:\temp\triple.bat`
+`C:\temp\triple.bat`
 
 > That command above may take many hours to execute.
 
