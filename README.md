@@ -1,6 +1,6 @@
 # Scripts to group auto bracketed Canon CR2 files for SNS-HDR processing
 
-This repository contains notes and scripts to help group RWAW CR2 Canon files for SNS-HDR command-line processing.
+This repository contains notes and scripts to help group RAW CR2 Canon files for SNS-HDR command-line processing.
 
 Required:
 - SNS-HDR (including Exiftool) - download SNS-HDR Lite from https://www.sns-hdr.com/
