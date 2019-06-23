@@ -15,7 +15,7 @@ See Exiftool manual for the tag descriptions
 
 Here is the approximate workflow:
 
-- Suppose SD card with the images is mounted as E: drive. The card's switch is in R/O mode for the safety of the pictures
+Suppose SD card with the images is mounted as E: drive. The card's switch is in R/O mode for the safety of the pictures
 
 The destination folder where images will be placed is defined in awk script as follows:
 
