@@ -1,5 +1,4 @@
-# triplets
-# Scripts to group auto bracketed Canon CR2 files
+# Scripts to group auto bracketed Canon CR2 files for SNS-HDR processing
 
 This repository contains notes and scripts to help group RWAW CR2 Canon files for SNS-HDR command-line processing.
 
@@ -34,6 +33,13 @@ Ifran view executable:
 I_VIEW="C:\\Program Files (x86)\\IrfanView\\i_view32.exe"
 
 File c:\temp\cr.txt should is required and must have one single empty line - all we need is carriage return in this file.
+
+Other options:
+- XF_1="-x1 " scaling for single files
+- NS_1="-n1 " noise reduction for single files
+- XF_3="-x1 " scaling for triplets
+- NS_3="-n1 " noise reduction for triplets
+
 
 ## In DOS window run:
 
