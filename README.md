@@ -1,4 +1,4 @@
-### Scripts to group auto bracketed Canon CR2 files for SNS-HDR processing
+# Scripts to group auto bracketed Canon CR2 files for SNS-HDR processing
 
 This repository contains notes and scripts to help group RWAW CR2 Canon files for SNS-HDR command-line processing.
 
@@ -8,7 +8,7 @@ Required:
 - Ifran View - download from https://www.irfanview.com/
 - File c:\temp\cr.txt is required and must have one single empty line.
 
-# Sample code below is for Canon 6D Mark II camera. 
+### Sample code below is for Canon 6D Mark II camera. 
 
 Different camera makes may require different flags in OPTS below.
 
@@ -24,7 +24,7 @@ TGT_DIR="C:\\Pictures\\Watk20190610\\"
 
 SNS-HDR executable is: 
 
-SNS_HDR_EXE="C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe"
+`SNS_HDR_EXE="C:\\Program Files\\SNS-HDR Lite 2\\SNS-HDR.exe"`
 
 Exiftool executable is: 
 
