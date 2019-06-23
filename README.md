@@ -9,7 +9,10 @@ See Exiftool manual for tag descriptions
 Here is approximate workflow
 
 Suppose SD card with the images is mounted as E: drive. The card's switch is in R/O mode for the safety of the pictures
+
 The destination folder where images will be placed is defined in awk script.
+
+File c:\temp\cr.txt should is required and must have one single empty line - all we need is carriage return in this file.
 
 # In DOS window run:
 
