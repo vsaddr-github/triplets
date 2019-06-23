@@ -1,4 +1,4 @@
-BEGIN {f1=""; f2=""; f3=""; 
+BEGIN {f1="";  f2="";  f3=""; 
        ff1=""; ff2=""; ff3=""
        i="" ; cnt=0;
        TGT_DIR="C:\\Pictures\\Watk20190610\\"; 
