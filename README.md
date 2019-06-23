@@ -8,7 +8,8 @@ See Exiftool manual for tag descriptions
 
 Here is approximate workflow
 
-Supoose SD card with images (card is locked as R/O) is mounted as E: drive
+Suppose SD card with the images is mounted as E: drive. The card's switch is in R/O mode for the safety of the pictures
+The destination folder where images will be placed is defined in awk script.
 
 # In DOS window run:
 
@@ -27,4 +28,7 @@ awk -f /c/temp/triple.awk /c/temp/list48.txt > /c/temp/triple.bat
 cd /d E:\DCIM\100CANON
 
 C:\temp\triple.bat
+
+# That command above may take many hours to execute.
+
 
