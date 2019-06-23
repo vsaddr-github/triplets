@@ -20,7 +20,7 @@ Suppose SD card with the images is mounted as E: drive. The card's switch is in 
 
 The destination folder where the final images will be placed is defined in awk script as follows:
 
-TGT_DIR="C:\\Pictures\\Watk20190610\\" 
+`TGT_DIR="C:\\Pictures\\Watk20190610\\"` 
 
 SNS-HDR executable is: 
 
@@ -28,11 +28,11 @@ SNS-HDR executable is:
 
 Exiftool executable is: 
 
-EXIFTOOL="C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe"
+`EXIFTOOL="C:\\Program Files\\SNS-HDR Lite 2\\ExifTool.exe"`
 
 Ifran view executable:
 
-I_VIEW="C:\\Program Files (x86)\\IrfanView\\i_view32.exe"
+`I_VIEW="C:\\Program Files (x86)\\IrfanView\\i_view32.exe"`
 
 File c:\temp\cr.txt is required and must have one single empty line - all we need is carriage return in this file.
 
@@ -44,22 +44,22 @@ Other options:
 
 ## In DOS window run:
 
-set OPTS=-fileOrder DateTimeOriginal -DateTimeOriginal -Filename -ExposureTime -FNumber  -AEBBracketValue
+`set OPTS=-fileOrder DateTimeOriginal -DateTimeOriginal -Filename -ExposureTime -FNumber  -AEBBracketValue
 
 cd /d E:\DCIM\100CANON
 
-"C:\Program Files\SNS-HDR Lite 2\exiftool" -T  %OPTS%   -csv -ext  CR2 IMG_*.CR2  > c:\temp\list48.txt
+"C:\Program Files\SNS-HDR Lite 2\exiftool" -T  %OPTS%   -csv -ext  CR2 IMG_*.CR2  > c:\temp\list48.txt`
 
 ## In Git Bash window run:
 
-awk -f /c/temp/triple.awk /c/temp/list48.txt > /c/temp/triple.bat
+`awk -f /c/temp/triple.awk /c/temp/list48.txt > /c/temp/triple.bat`
 
 ## In DOS window run:
 
-cd /d E:\DCIM\100CANON
+`cd /d E:\DCIM\100CANON
 
-C:\temp\triple.bat
+C:\temp\triple.bat`
 
-That command above may take many hours to execute.
+> That command above may take many hours to execute.
 
 
